@@ -1,0 +1,594 @@
+
+:root {
+    --primary-color: #6A5ACD;
+    --secondary-color: #9370DB;
+    --accent-color: #FFA07A;
+    --background-color: #F0F8FF;
+    --text-color: #333333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    transition: background-color 0.3s;
+}
+
+h1, h2 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--primary-color);
+}
+
+#screen-time-tracker {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#screen-time {
+    color: var(--accent-color);
+    font-size: 24px;
+}
+
+.answer-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    text-align: left;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.answer-button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.correct {
+    background-color: #4CAF50;
+    color: black; /* Changed from green to black */
+}
+
+.incorrect {
+    background-color: #F44336;
+    color: white; /* Keep this white for contrast */
+}
+
+#money-tree {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#money-tree li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+#money-tree .current {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+#question {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin: 20px 0;
+    font-weight: 600;
+}
+
+#prize {
+    font-size: 28px;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    #game-container {
+        padding: 20px;
+    }
+
+    .answer-button {
+        font-size: 16px;
+    }
+
+    #question {
+        font-size: 20px;
+    }
+}
+
+.emoji-multiplier {
+    font-size: 36px;
+    animation: spin 2s linear infinite;
+    display: inline-block;
+    color: var(--accent-color); /* Make it stand out in both light and dark modes */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.difficulty-button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.difficulty-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    --background-color: #2C3E50;
+    --text-color: #ECF0F1;
+    --primary-color: #8E44AD;
+    --secondary-color: #9B59B6;
+    --accent-color: #F39C12;
+}
+
+.dark-mode #game-container {
+    background-color: #34495E;
+}
+
+.dark-mode .answer-button {
+    background-color: #3498DB;
+}
+
+.dark-mode .answer-button:hover {
+    background-color: #2980B9;
+}
+
+.dark-mode #money-tree li {
+    background-color: #7F8C8D;
+}
+
+.dark-mode #money-tree .current {
+    background-color: #F1C40F;
+    color: #2C3E50;
+}
+
+.mode {
+    display: none;
+}
+
+.mode.active {
+    display: block;
+}
+
+.mode-button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.mode-button:hover, .mode-button.active {
+    background-color: var(--primary-color);
+}
+
+.table-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.table-cell {
+    padding: 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+
+.table-cell:hover {
+    background-color: var(--primary-color);
+}
+
+#table-display {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.table-row {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.table-row:hover {
+    background-color: var(--primary-color);
+}
+
+.highlighted {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--primary-color);
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.shake {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    color: #F44336;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f2d74e;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+#visualize-mode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.visualize-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.visualize-input input {
+    width: 60px;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+.visualize-input button {
+    height: 40px;
+    padding: 0 15px;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.emoji-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.emoji {
+    font-size: 24px;
+    margin: 5px;
+    animation: pop-in 0.5s;
+}
+
+@keyframes pop-in {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+#text-example {
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 10px;
+    max-width: 80%;
+    text-align: center;
+}
+
+#practice-mode {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+#question-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#money-tree {
+    max-height: 30vh;
+    overflow-y: auto;
+}
+
+.difficulty-button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.difficulty-button:hover, .difficulty-button.active {
+    background-color: var(--primary-color);
+}
+
+#progress-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin: 20px auto;
+}
+
+#progress-bar {
+    width: 0;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+}
+
+#progress-label {
+    text-align: center;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+#results-summary {
+    margin-top: 20px;
+    text-align: left;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.result-item {
+    margin-bottom: 10px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.result-item p {
+    margin: 5px 0;
+}
+
+.correct {
+    color: #000000; /* green 4CAF50 */
+    font-weight: lighter
+}
+
+.incorrect {
+    color: #F44336;
+    font-weight: bold;
+}
+
+#performance-summary {
+    background-color: var(--summary-background);
+    color: var(--text-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+#performance-summary h3 {
+    color: var(--text-color);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+.summary-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.stat-item {
+    text-align: center;
+}
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+.stat-label {
+    font-size: 14px;
+    color: var(--text-color);
+}
+.table-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+.table-link:hover {
+    text-decoration: underline;
+}
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+#results-table th, #results-table td {
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+}
+#results-table th {
+    background-color: var(--secondary-color);
+    font-weight: bold;
+}
+#results-table tr:nth-child(even) {
+    background-color: var(--secondary-color);
+}
+.correct {
+    color: #000000; /* green 4CAF50 */
+    font-weight: lighter
+}
+.incorrect {
+    color: #000000;
+    font-weight: bold;
+}
+
+/* Ensure no overflow and proper layout */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Additional styles for better UI */
+.answer-button.correct {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.answer-button.incorrect {
+    background-color: #F44336;
+    color: white;
+}
+
+#results-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.penalize {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    color: #F44336;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.celebrate {
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f2d74e;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes celebrate-shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.shake {
+    animation: celebrate-shake 0.5s;
+    animation-iteration-count: infinite;
+}
